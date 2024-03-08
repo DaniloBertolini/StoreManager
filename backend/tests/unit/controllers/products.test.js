@@ -42,7 +42,7 @@ describe('Products Controller Test', function () {
 
     sinon.stub(productsServices, 'oneProdut').resolves(oneProductSuccess);
 
-    await productsController.oneProdutsCon(req, res);
+    await productsController.oneProdutCon(req, res);
 
     expect(res.status).to.calledWith(200);
     expect(res.json).to.calledWith(oneProduct);
@@ -59,7 +59,7 @@ describe('Products Controller Test', function () {
 
     sinon.stub(productsServices, 'oneProdut').resolves(oneProductFailed);
 
-    await productsController.oneProdutsCon(req, res);
+    await productsController.oneProdutCon(req, res);
 
     expect(res.status).to.calledWith(404);
     expect(res.json).to.calledWith(messageProductNotFound);

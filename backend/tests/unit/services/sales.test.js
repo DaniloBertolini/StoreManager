@@ -11,7 +11,7 @@ const { messageSaleNotFound } = require('../../mocks/salesMockResponse');
 
 chai.use(sinonChai);
 
-describe('Products Service Test', function () {
+describe('Sales Service Test', function () {
   afterEach(function () {
     sinon.restore();
   });
@@ -19,7 +19,7 @@ describe('Products Service Test', function () {
   it('All Sales', async function () {
     sinon.stub(salesModels, 'findAll').resolves(allSales);
 
-    const response = await salesServices.allProduts();
+    const response = await salesServices.allSales();
 
     expect(response.status).to.be.equal('SUCCESSFUL');
     expect(response.data).to.be.equal(allSales);

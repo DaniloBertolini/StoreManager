@@ -6,7 +6,7 @@ const allProdutsCon = async (_req, res) => {
   return res.status(mapStatusHTTP(status)).json(data);
 };
 
-const oneProdutsCon = async (req, res) => {
+const oneProdutCon = async (req, res) => {
   const { id } = req.params;
   const { status, data } = await productsServices.oneProdut(id);
   return res.status(mapStatusHTTP(status)).json(data);
@@ -14,5 +14,5 @@ const oneProdutsCon = async (req, res) => {
 
 module.exports = {
   allProdutsCon,
-  oneProdutsCon,
+  oneProdutCon,
 };
