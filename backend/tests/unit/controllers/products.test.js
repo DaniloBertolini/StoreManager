@@ -78,7 +78,7 @@ describe('Products Controller Test', function () {
 
     await productsController.createOneProductCon(req, res);
 
-    expect(res.status).to.calledWith(200);
+    expect(res.status).to.calledWith(201);
     expect(res.json).to.calledWith(oneProduct);
   });
 });

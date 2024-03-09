@@ -26,9 +26,12 @@ const oneProductOnlyName = {
   name: 'Martelo de Thor',
 };
 
+const productInsertId = { insertId: 1 };
+
 module.exports = {
   allProducts,
   oneProduct,
   oneProductOnlyName,
   oneProductWithNameLenthWrong,
+  productInsertId,
 };

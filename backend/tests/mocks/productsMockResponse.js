@@ -40,4 +40,5 @@ module.exports = {
   messageProductNotFound,
   oneProductCreated,
   oneProductNameFailed,
+  messageProductUnprocessable,
 };

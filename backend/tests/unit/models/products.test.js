@@ -4,7 +4,7 @@ const sinonChai = require('sinon-chai');
 
 const { expect } = require('chai');
 const connection = require('../../../src/models/connection');
-const { allProducts, oneProduct, oneProductOnlyName } = require('../../mocks/productsMock');
+const { allProducts, oneProduct, oneProductOnlyName, productInsertId } = require('../../mocks/productsMock');
 const { productsModels } = require('../../../src/models');
 
 chai.use(sinonChai);
@@ -39,10 +39,10 @@ describe('Products Model Test', function () {
   });
 
   it('Register One Product Success', async function () {
-    sinon.stub(connection, 'execute').resolves(oneProduct);
+    sinon.stub(connection, 'execute').resolves([productInsertId]);
 
     const response = await productsModels.create(oneProductOnlyName.name);
 
-    expect(response).to.equal(oneProduct);
+    expect(response).to.deep.equal(productInsertId);
   });
 });
