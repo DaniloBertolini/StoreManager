@@ -35,7 +35,7 @@ describe('Sales Service Test', function () {
   });
 
   it('One Sale Failed', async function () {
-    sinon.stub(salesModels, 'findOne').resolves();
+    sinon.stub(salesModels, 'findOne').resolves([]);
 
     const response = await salesServices.oneSale(-1);
 

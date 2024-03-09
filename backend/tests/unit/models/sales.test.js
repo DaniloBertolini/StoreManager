@@ -23,7 +23,7 @@ describe('Sales Model Test', function () {
   });
 
   it('One Sale Succes', async function () {
-    sinon.stub(connection, 'execute').resolves([[oneSale]]);
+    sinon.stub(connection, 'execute').resolves([oneSale]);
 
     const response = await salesModels.findOne(1);
 
@@ -31,7 +31,7 @@ describe('Sales Model Test', function () {
   });
 
   it('One Sale Failed', async function () {
-    sinon.stub(connection, 'execute').resolves([[]]);
+    sinon.stub(connection, 'execute').resolves([]);
 
     const response = await salesModels.findOne(-1);
 
