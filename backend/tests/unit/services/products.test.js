@@ -4,9 +4,9 @@ const sinonChai = require('sinon-chai');
 
 const { expect } = require('chai');
 const { productsModels } = require('../../../src/models');
-const { allProducts, oneProduct } = require('../../mocks/productsMock');
+const { allProducts, oneProduct, oneProductOnlyName, oneProductWithNameLenthWrong } = require('../../mocks/productsMock');
 const { productsServices } = require('../../../src/services');
-const { messageProductNotFound } = require('../../mocks/productsMockResponse');
+const { messageProductNotFound, oneProductCreated, oneProductNameFailed } = require('../../mocks/productsMockResponse');
 
 chai.use(sinonChai);
 
@@ -40,5 +40,21 @@ describe('Products Service Test', function () {
 
     expect(response.status).to.be.equal('NOT_FOUND');
     expect(response.data).to.be.deep.equal(messageProductNotFound);
+  });
+
+  it('Register One Product Success', async function () {
+    sinon.stub(productsModels, 'create').resolves(oneProduct);
+
+    const response = await productsServices.createProduct(oneProductOnlyName);
+
+    expect(response.status).to.be.equal('SUCCESSFUL');
+    expect(response.data).to.be.deep.equal(oneProductCreated);
+  });
+
+  it('Register One Product Failed With Name Less Than 5', async function () {
+    const response = await productsServices.createProduct(oneProductWithNameLenthWrong);
+
+    expect(response.status).to.be.equal('UNPROCESSABLE');
+    expect(response.data).to.be.deep.equal(oneProductNameFailed);
   });
 });

@@ -18,7 +18,17 @@ const oneProduct = {
   name: 'Martelo de Thor',
 };
 
+const oneProductWithNameLenthWrong = {
+  name: 'Mar',
+};
+
+const oneProductOnlyName = {
+  name: 'Martelo de Thor',
+};
+
 module.exports = {
   allProducts,
   oneProduct,
+  oneProductOnlyName,
+  oneProductWithNameLenthWrong,
 };

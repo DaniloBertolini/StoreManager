@@ -4,6 +4,10 @@ const messageProductNotFound = {
   message: 'Product not found',
 };
 
+const messageProductUnprocessable = {
+  message: '"name" length must be at least 5 characters long',
+};
+
 const allProductsSuccess = {
   status: 'SUCCESSFUL',
   data: allProducts,
@@ -14,9 +18,19 @@ const oneProductSuccess = {
   data: oneProduct,
 };
 
+const oneProductCreated = {
+  status: 'CREATED',
+  data: oneProduct,
+};
+
 const oneProductFailed = {
   status: 'NOT_FOUND',
   data: messageProductNotFound,
+};
+
+const oneProductNameFailed = {
+  status: 'UNPROCESSABLE',
+  data: messageProductUnprocessable,
 };
 
 module.exports = {
@@ -24,4 +38,6 @@ module.exports = {
   oneProductSuccess,
   oneProductFailed,
   messageProductNotFound,
+  oneProductCreated,
+  oneProductNameFailed,
 };

@@ -9,7 +9,7 @@ chai.use(sinonChai);
 const { allProducts, oneProduct } = require('../../mocks/productsMock');
 const { productsServices } = require('../../../src/services');
 const { productsController } = require('../../../src/controllers');
-const { allProductsSuccess, oneProductFailed, messageProductNotFound, oneProductSuccess } = require('../../mocks/productsMockResponse');
+const { allProductsSuccess, oneProductFailed, messageProductNotFound, oneProductSuccess, oneProductCreated } = require('../../mocks/productsMockResponse');
 
 describe('Products Controller Test', function () {
   afterEach(function () {
@@ -63,5 +63,22 @@ describe('Products Controller Test', function () {
 
     expect(res.status).to.calledWith(404);
     expect(res.json).to.calledWith(messageProductNotFound);
+  });
+
+  it('Register One Product Success', async function () {
+    const req = {
+      name: 'Martelo de Thor',
+    };
+    const res = {
+      status: sinon.stub().returnsThis(),
+      json: sinon.stub(),
+    };
+
+    sinon.stub(productsServices, 'registerOneProduct').resolves(oneProductCreated);
+
+    await productsController.createOneProductCon(req, res);
+
+    expect(res.status).to.calledWith(200);
+    expect(res.json).to.calledWith(oneProduct);
   });
 });
