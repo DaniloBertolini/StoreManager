@@ -22,6 +22,15 @@ const oneProductWithNameLenthWrong = {
   name: 'Mar',
 };
 
+const oneProductWithNameLenthEquals5 = {
+  id: 1,
+  name: 'Porta',
+};
+
+const oneProductWithNameLenthEquals5OnlyName = {
+  name: 'Porta',
+};
+
 const oneProductOnlyName = {
   name: 'Martelo de Thor',
 };
@@ -34,4 +43,6 @@ module.exports = {
   oneProductOnlyName,
   oneProductWithNameLenthWrong,
   productInsertId,
+  oneProductWithNameLenthEquals5OnlyName,
+  oneProductWithNameLenthEquals5,
 };

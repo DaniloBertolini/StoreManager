@@ -1,4 +1,4 @@
-const { allProducts, oneProduct } = require('./productsMock');
+const { allProducts, oneProduct, oneProductWithNameLenthEquals5 } = require('./productsMock');
 
 const messageProductNotFound = {
   message: 'Product not found',
@@ -23,6 +23,11 @@ const oneProductCreated = {
   data: oneProduct,
 };
 
+const oneProductCreated2 = {
+  status: 'CREATED',
+  data: oneProductWithNameLenthEquals5,
+};
+
 const oneProductFailed = {
   status: 'NOT_FOUND',
   data: messageProductNotFound,
@@ -41,4 +46,5 @@ module.exports = {
   oneProductCreated,
   oneProductNameFailed,
   messageProductUnprocessable,
+  oneProductCreated2,
 };

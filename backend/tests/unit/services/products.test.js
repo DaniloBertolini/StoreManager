@@ -4,9 +4,9 @@ const sinonChai = require('sinon-chai');
 
 const { expect } = require('chai');
 const { productsModels } = require('../../../src/models');
-const { allProducts, oneProduct, oneProductOnlyName, oneProductWithNameLenthWrong, productInsertId } = require('../../mocks/productsMock');
+const { allProducts, oneProduct, oneProductOnlyName, oneProductWithNameLenthWrong, productInsertId, oneProductWithNameLenthEquals5 } = require('../../mocks/productsMock');
 const { productsServices } = require('../../../src/services');
-const { messageProductNotFound, messageProductUnprocessable } = require('../../mocks/productsMockResponse');
+const { messageProductNotFound, messageProductUnprocessable, oneProductCreated2 } = require('../../mocks/productsMockResponse');
 
 chai.use(sinonChai);
 
@@ -56,5 +56,14 @@ describe('Products Service Test', function () {
 
     expect(response.status).to.be.equal('UNPROCESSABLE');
     expect(response.data).to.be.deep.equal(messageProductUnprocessable);
+  });
+
+  it('Register One Product Success With Name Equals 5', async function () {
+    sinon.stub(productsModels, 'create').resolves(productInsertId);
+
+    const response = await productsServices.createProduct(oneProductWithNameLenthEquals5);
+
+    expect(response.status).to.be.equal('CREATED');
+    expect(response.data).to.be.deep.equal(oneProductWithNameLenthEquals5);
   });
 });
