@@ -74,7 +74,7 @@ describe('Products Controller Test', function () {
       json: sinon.stub(),
     };
 
-    sinon.stub(productsServices, 'registerOneProduct').resolves(oneProductCreated);
+    sinon.stub(productsServices, 'createProduct').resolves(oneProductCreated);
 
     await productsController.createOneProductCon(req, res);
 

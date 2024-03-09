@@ -12,7 +12,14 @@ const oneProdutCon = async (req, res) => {
   return res.status(mapStatusHTTP(status)).json(data);
 };
 
+const createOneProductCon = async (req, res) => {
+  const { body } = req;
+  const { status, data } = await productsServices.createProduct(body);
+  return res.status(mapStatusHTTP(status)).json(data);
+};
+
 module.exports = {
   allProdutsCon,
   oneProdutCon,
+  createOneProductCon,
 };

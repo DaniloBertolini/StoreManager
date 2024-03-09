@@ -1,4 +1,5 @@
 const { productsModels } = require('../models');
+const { validateNameLength } = require('./validations');
 
 const allProduts = async () => {
   const products = await productsModels.findAll();
@@ -11,7 +12,20 @@ const oneProdut = async (id) => {
   return { status: 'SUCCESSFUL', data: product };
 };
 
+const createProduct = async ({ name }) => {
+  if (validateNameLength(name)) {
+    return {
+      status: 'UNPROCESSABLE',
+      data: { message: '"name" length must be at least 5 characters long' },
+    }; 
+  }
+  
+  const { insertId } = await productsModels.create(name);
+  return { status: 'CREATED', data: { id: insertId, name } };
+};
+
 module.exports = {
   allProduts,
   oneProdut,
+  createProduct,
 };

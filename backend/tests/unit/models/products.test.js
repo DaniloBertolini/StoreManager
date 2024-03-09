@@ -41,7 +41,7 @@ describe('Products Model Test', function () {
   it('Register One Product Success', async function () {
     sinon.stub(connection, 'execute').resolves(oneProduct);
 
-    const response = await productsModels.create(oneProductOnlyName);
+    const response = await productsModels.create(oneProductOnlyName.name);
 
     expect(response).to.equal(oneProduct);
   });

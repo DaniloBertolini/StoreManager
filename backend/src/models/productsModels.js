@@ -1,5 +1,5 @@
 const connection = require('./connection');
-const { getAllProducts, getOneProduct } = require('./querys/productsQuery');
+const { getAllProducts, getOneProduct, postOneProduct } = require('./querys/productsQuery');
 
 const findAll = async () => {
   const [products] = await connection.execute(getAllProducts);
@@ -11,7 +11,13 @@ const findOne = async (id) => {
   return product;
 };
 
+const create = async (name) => {
+  const [product] = await connection.execute(postOneProduct, [name]);
+  return product;
+};
+
 module.exports = {
   findAll,
   findOne,
+  create,
 };
